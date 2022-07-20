@@ -1,0 +1,103 @@
+---
+title: "כותרת"
+subtitle: "כותרת משנה"
+author: "השם שלי"
+date: "`r format(Sys.time(), '%d-%m-%Y')`"  
+output: 
+  html_document: 
+    toc: yes
+    toc_depth: 2
+    toc_float: yes
+    toc_collapsed: yes
+    number_sections: yes
+    smooth_scroll: yes
+    code_folding: hide
+    fig_caption: yes
+    highlight: espresso
+    theme: flatly
+    css: "style.css"
+editor_options: 
+  chunk_output_type: console
+---  
+```{r setup, include = TRUE}
+# global chunk options
+knitr::opts_chunk$set(echo = TRUE,
+                      warning = FALSE,
+                      message = FALSE,
+                      tidy=TRUE,
+                      fig.path='Figures_RMD/',
+                      fig.align = 'center')
+
+# don't show NA's in tables
+options(knitr.kable.NA = '')
+
+```
+
+
+```{r loading packages etc.}
+# load packages
+library(IAplots)
+
+# change settings
+theme_set(IA_theme())
+options(scipen = 999,digits = 3)
+
+# functions
+# 1. make nice tables
+IA_kable <- function(x){ 
+  kable(x)%>% 
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"), full_width = F) 
+} 
+# 2. for large tables we have a scroll box 
+IA_kable_s <- function(x, wi = 800, hi = 200){
+  wi2 <- paste0(wi, "px")
+  hi2 <- paste0(hi, "px")
+  IA_kable(x) %>% scroll_box(width = wi2, height = hi2 )
+}
+
+```
+
+
+# מבוא {-}
+:::{.pink-box}
+<div dir="rtl">
+כיוון ש RStudio לא תומכת בכתיבה מימין לשמאל, כדאי לכתוב את הדברים שרוצים בעברית בקובץ וורד נפרד ואז לעתיק לתוך קובץ ה Rmd
+</div>
+:::
+
+:::{.blue-box}
+יש גם קופסא בצבע כחול
+:::
+
+# פרק ראשון
+ברירת המחדל בקובץ זה הוא שהטקטס יהיה מימין לשמאל  
+
+## סעיף   
+## סעיף 
+```{r, echo=T}
+head(mtcars)
+```
+
+
+
+### תת סעיף
+### תת סעיף
+# פרק שני
+
+
+
+<p align='center'>
+דוגמא לטקסט שמיושר למרכז
+</p>
+
+<p class = "ltr">
+example for a text alignet to the left
+</p>
+
+<p class = "ltr">
+# סשן {-}
+</p>
+```{r session info}
+sessionInfo()
+```
+
